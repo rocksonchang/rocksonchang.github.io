@@ -5,35 +5,22 @@ title: Fringe reduction
 <body>
 	<h1>Fringe reduction algorithm for absorption images</h1>
 	<p align="justify">
-	When studying ultracold atoms, we commonly take images of the atom cloud.  This is an implementation of a noise suppression algorithm for absorption images of ultracold atoms.  In a nutshell, a series of background images are taken, containing only the noise.  The algorithm then decomposes the noise present in these images into an orthonormal basis (through Schmidt-Decomposition).  With this basis, an idealized reference image can be constructred to cancel out the noise in the images with the atoms (the signal).  The key reason why this approach works is that there is an inherent structure in the noise.  Recognizing this, a small number of basis vectors is often sufficient to significantly improve image quality, as seen below.
+	In the study of ultracold atoms, we often take images of the atom cloud.  From these images we can infer many things regarding the state of the atoms, and as such, the quality of these images is of utmost importance.  The most common type of noise which degrades image quality is due to a mismatch between an absorption image and a background reference image which creates a residual fringe structure. In this post, I present an implementation of a fringe reduction algorithm for absorption images of ultracold atoms.  
+	</p>
+	<p align="justify">
+	In a nutshell, the algorithm takes in a series of reference images, essentially containing only the noise.  The algorithm then decomposes the noise present in these images into an orthonormal basis through Schmidt-Decomposition.  With this basis, an idealized reference image can be constructred to cancel out the noise in the images with the atoms (the signal).  In practice only a small number of basis vectors is sufficient to dramatically improve image quality, as seen below.  The key reason why this approach works is that there is an inherent structure in the noise which significantly reduces the space of possible noise vectors.
 	</p>
 
 	<figure display:table>
 	<center>
-		<img align="middle" src="../assets/fringe-reduction.png" alt="Fringe-reduction" style="width:70%;height:70%; padding: 0 0px 5px 0px;" >		
+		<img align="middle" src="../assets/fringe-reduction-763x417.png" alt="Fringe-reduction" style="width:763px;height:417px; padding: 0 0px 5px 0px;" >		
 		<figcaption>Figure: Absorption images of an ultracold cloud.  In general, images contain the atoms (horizontally oriented, pancake shaped cloud) and noise (circular, high spatial frequency fringes).  Implementing the algorithm with as few as eight noise basis images significantly improves the signal-to-noise ratio.  </figcaption>
 	</center>
 	</figure>			
 	
 	<div class="blurb">
 	<p align="justify">
-	Check out my <a href="http://nbviewer.jupyter.org/github/rocksonchang/Fringe-Reduction/blob/master/Fringe-Reduction-v1p3.ipynb"> iPython notebook</a> demonstration of the algorithm in action.  Includes a much more comprehensive description of the principal of the algorithm.  <i>The notebook will eventually be embedded directly into this post</i>.
+	Check out my <a href="http://nbviewer.jupyter.org/github/rocksonchang/Fringe-Reduction/blob/master/Fringe-Reduction-v1p3.ipynb"> iPython notebook</a> demonstration of the algorithm in action.  The notebook includes a much more comprehensive description of the principal of the algorithm.  <i>This notebook will eventually be embedded directly into this post</i>.
 	</p>
 	</div>
 </body>
-
-<!--
-<p align="justify">
-	When studying ultracold atoms, we commonly take images of the atom cloud.  To remove the signal from the backround, we take two images: an <i>absorption</i> image with the atom cloud, followed by a <i>reference</i> image without the atom cloud.  In a perfect world, the comparison between these images allows one to obtain a background-free signal.
-	</p>
-	<p align="justify">
-	In practice, there can often be a mismatch between the background signals of the absorption and reference images due to technical noise -- for example vibrations in the optics of the imaging system.  This can create <i>noise</i> in the images.  
-	</p>
-	</p>
-	<p align="justify">
-	In the images below, the the atom cloud is the horizontally aligned, pancake structure with high density represented by the warmer colors.  In the original image, additional noise is seen in the form of a high spatial-frequency ring pattern.  
-	</p>
-	<p align="justify">
-	The observed structure in the noise contains singificant information, telling us about the nature of the source of nosie.  Knowing the source, we also know that the noise only spans a small space of 
-	</p>
-	-->
