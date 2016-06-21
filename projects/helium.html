@@ -6,7 +6,10 @@ title: Helium
 	<div class="blurb">
 	<h1>Single-atom counting of ultracold clouds</h1>
 	<p align="justify">
-	<i>Description to come...</i>
+	Over the past twenty years, fhe field of ultracold atoms has come to dominate the study of atomic, molecular and optical physics, with hundreds of experiments <a href="https://ucan.physics.utoronto.ca/">around the world</a>.  In the vast majority of studies, information regarding the image cloud is inferred from optical images of the atom cloud.  Just like in photography, such images integrate over the line-of-sight, and information regarding the depth of the object is lost.   
+	</p>
+	<p>
+	In the <a href="https://www.lcf.institutoptique.fr/Groupes-de-recherche/Optique-atomique/Experiences/Lattice-Gases">Atom Optics group</a> at l'Institut d'Optique, we have been working with a novel electronic detection system using metastable Helium.  This detection scheme allows us to reconstruct the complete three-dimensional distribution of the atom cloud at the single atom level.
 	</p>
 	</div>
 
@@ -14,13 +17,52 @@ title: Helium
 	<div>
 	<center>
 		<img src="../assets/BECGIFV2.gif" alt="He-BEC" style="width:450px; height:450px; " >	
-		<figcaption>Figure: Three-dimensional reconstruction of the velocity distribution of an ultracold cloud.  Each individual point represents at least a single detected Helium atom.  Hotter colors indicate more events within a three-dimensional bin.  Seen is an initially cigar-shaped Bose-Einstein condensate, which has undergone meanfield expansion resulting in an inversion of the aspect ratio.  Surrounding the cloud can be seen a mixture of thermal and quantum depletion.</figcaption>
+		<figcaption>Figure 1: Three-dimensional reconstruction of the velocity distribution of an ultracold cloud.  Each individual point represents at least a single detected Helium atom.  Hotter colors indicate more events within a three-dimensional bin.  Seen is an initially cigar-shaped Bose-Einstein condensate, which has undergone meanfield expansion resulting in an inversion of the aspect ratio.  Surrounding the cloud can be seen a mixture of thermal and quantum depletion.</figcaption>
 	</center>
 	</div>
 	
+
+
+	<h1>How it works: Electronic detection</h1>
+	<p align="justify">
+	In our experiments, we first prepare some interesting quantum many-body state of ultracold atoms.  Such states are typically characterized by the presence of correlations between particles, which we can directly access with our detection.  To detect the cloud, we release the atom cloud, allowing it to freely expand while falling under gravity.  During the free-fall, the cloud changes in shape and significantly expands in size due to the distribution of velocities in the initial cloud.  After about 330 milliseconds, the atom cloud arrives at our electronic detector, positioned about 50 cm from the initial cloud position.
+	</p>
+	<div class="floatleft" style=" width:411px;">
+	<img src="../assets/helium-mcp-411x448.png" alt="He-mcp" style="width:411px; height:448px; " >	
+		<figcaption>Figure 2: Electronic detection of metastable Helium.  Image credit: Lattice gases team at the Institut d'Optique.</figcaption>
+	</div>
+	<p align="justify">
+	For these experiments, we work with Helium atoms in an excited metastable state.  Such atoms are special in that they contain a tremendous amount of internal energy (about 20 eV)  -- essentially, these atoms are like tiny bombs.  When they strike a metal, they `explode', ionizing electrons from the surface of the metal.  In our case, we use a device called a <i>Micro-Channel Plate</i> detector (MCP).  This plate is perforated by an array of holes (channels).  As metastable helium particles fall onto this detector, electrons are ionized, cascading down through the channel ionizing more and more electrons, essentially creating an avalanche like effect.  We have thus amplified a microscopic signal, a single atom, into a macroscopic signal of a few thousand electrons.
+	</p>
+
 	<div style="clear:both;"></div>
+	<p align="justify">
+	This electron shower we then detect using a device called a delay-line anode.  This is essentially just a copper wire wound back-and-forth.  The electron shower strikes the wire, creating a pair of electrical pulses that counter-propagate along the wire.  We detect these pulses, and track their arrival times using a custom FPGA setup.  
+	</p>
+	<p align="justify">
+	By looking at the difference in arrival time of these two pulses, we can determine the position along the wire that the atom struck. In our case, we have two such delay lines, wound in perpendicular directions, providing information along the transverse directions <i>x</i> and <i>y</i>.  Lastly, by looking at the average arrival time of these pulses, we obtain information regarding the vertical direction <i>z</i>.
+	</p>
+
+	<div class="floatright" style=" width:430px;">
+	<img src="../assets/helium-algo-430x233.png" alt="He-mcp" style="width:430px; height:233px; " >	
+		<figcaption>Figure 3: Atom event reconstruction from electronic pulses.  Pulses arrive from each of our four channels.  By looking at combinations of different quadruplets, we can identify real atom events.  Image credit: Lattice gases team at the Institut d'Optique.</figcaption>
+	</div>
+	<p align="justify">
+	In the actual experiment, we have tens of thousands of electronic pulses arriving at our detectors, four for each atom event, per experimental run.  To correctly identify atom events, we test various combinations of four pulses (quadruplets), one along each channel, to see if they could correspond to a physically meaningful signal.  Our reconstruction must also be robust against electronic noise (excess of pulses or loss of pulses).  We currently work in a low noise regime where we are able to reconstruct over 90% of atom events.
+	</p>
+
+	<div style="clear:both;"></div>
+	<h1>Single-atom counting: Quantum atom optics</h1>
+	<p align="justify">
+	As seen in Figure 1, our detector is able to detect individual atoms from our atom cloud.  In many ways, this is equivalent to a single-photon detector (or rather, single-photon camera).  Such devices have revolutionized the study of quantum optics.  For cold atoms, such a detector has been used to observe the famous Hanbury-Brown and Twiss effect with atoms, directly revealing the quantum statistics of cold bose and fermi gases [M. Schellekens et al. Science 310, 648 (2005), T. Jeltes et al. Nature 445, 402 (2007)].  In the lattice gases team, we are using the system to study quantum correlations in many-body states, for example in the search for signatures of quantum depletion of a Bose-Einstein condensate.
+	</p>
+	
+	<div style="clear:both;"></div>
+	<div class="line" style="padding: 0 0 20px 0;""></div>
 	<div>
 	This work was carried out in the <a href="https://www.lcf.institutoptique.fr/Groupes-de-recherche/Optique-atomique/Experiences/Lattice-Gases">Atom Optics group</a> at l'Institut d'Optique in Palaiseau, France.
+	Details of the FPGA setup can be found here F. Nogrette et al. Review
+	of Scientific Instruments, 86, 113105, 19 November 2015, and on the <a href="http://arxiv.org/abs/1504.06197">arXiv</a>.
 	</div>
 <!-- /.blurb -->
 </body>
