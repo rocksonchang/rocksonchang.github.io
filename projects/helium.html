@@ -2,6 +2,9 @@
 layout: default
 title: Helium
 ---
+<head>
+<script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
+</head>
 <body>
 	<div class="blurb">
 	<h1>Single-atom counting of ultracold clouds</h1>
@@ -27,7 +30,7 @@ title: Helium
 	<p align="justify">
 	In our experiments, we first prepare a many-body state of ultracold atoms.  Such states are typically characterized by the presence of quantum correlations between the atoms in the cloud, which we can directly access with our detector.  To detect the cloud, we release the atom cloud, allowing it to freely expand while falling under gravity.  During the free-fall, the cloud changes in shape and significantly expands in size due to the distribution of velocities in the initial state.  After about 330 milliseconds, the atom cloud arrives at our electronic detector, positioned about 50 cm from the initial cloud position.
 	</p>
-	<div class="floatleft" style=" width:411px;">
+	<div class="floatleft" style=" width:411px; height:448px;">
 	<img src="../assets/helium-mcp-411x448.png" alt="He-mcp" style="width:411px; height:448px; " >	
 		<figcaption>Figure 2: Electronic detection of metastable Helium.  Image credit: Lattice gases team at the Institut d'Optique.</figcaption>
 	</div>
@@ -40,7 +43,7 @@ title: Helium
 	This electron shower we then detect using a device called a <i>delay-line anode</i>.  This is essentially just a copper wire wound back-and-forth.  The electron shower strikes the wire, creating a pair of electrical pulses that counter-propagate along the wire.  We detect these pulses, and track their arrival times using a custom FPGA setup which is able to operate at speeds up to 4 MHz.  
 	</p>
 	<p align="justify">
-	By looking at the difference in arrival time of these two pulses, <i>tx1-tx2</i>, we can determine the position along the wire that the atom struck. In our case, we have two such delay lines, wound in perpendicular directions, providing information along the transverse directions <i>x</i> and <i>y</i>.  Lastly, by looking at the average arrival time of these pulses, we obtain information regarding the vertical direction <i>z</i>.
+	By looking at the difference in arrival time of these two pulses, <span lang="latex">t_{x1}-t_{x2}</span>, we can determine the position along the wire that the atom struck. In our case, we have two such delay lines, wound in perpendicular directions, providing information along the transverse directions <span lang="latex">x</span> and <span lang="latex">y</span>.  Lastly, by looking at the average arrival time of these pulses, we obtain information regarding the vertical direction <span lang="latex">z</span>.
 	</p>
 
 	<div class="floatright" style=" width:430px;">
@@ -54,7 +57,24 @@ title: Helium
 	<div style="clear:both;"></div>
 	<h1>Single-atom counting: Quantum atom optics</h1>
 	<p align="justify">
-	As seen in Figure 1, our detector is able to detect individual atoms from our atom cloud.  In many ways, this is equivalent to a single-photon detector (or rather, single-photon camera).  Such devices have revolutionized the study of quantum optics.  For cold atoms, such a detector has been used to observe the famous Hanbury-Brown and Twiss effect with atoms, directly revealing the quantum statistics of cold bose and fermi gases [M. Schellekens et al. Science 310, 648 (2005), T. Jeltes et al. Nature 445, 402 (2007)].  In the lattice gases team, we are using the system to study quantum correlations in many-body states, for example in the search for signatures of quantum depletion of a Bose-Einstein condensate.
+	As seen in Figure 1, our system is able to detect individual atoms from our atom cloud.  In many ways, this is equivalent to a single-photon detector (or rather, single-photon camera).  Such devices have revolutionized the study of quantum optics.  For cold atoms, MCPs have been used to observe the famous Hanbury-Brown and Twiss effect with atoms, directly revealing the quantum statistics of cold bose and fermi gases [M. Schellekens et al. Science 310, 648 (2005), T. Jeltes et al. Nature 445, 402 (2007)].  
+	</p>
+	<p align="justify">
+	In the mid 1950s, Hanbury-Brown and Twiss studied the correlation in arrival of photons at two detectors, <span lang="latex">D_1</span> and <span lang="latex">D_2</span>, from a distant star <span lang="latex">S</span> (see Figure 4).  Stars are hot chaotic bodies that spew out light with thermal statistics.  It it was thus to the surprise of many that they observed that these photons tended to arrive from the source at the same time -- that is to say the arrival of photons was correlated.  This effect, known as <i>photon bunching</i>, can be explained from a quantum mechanical perspective.
+	</p>
+	<p align="justify">
+	Because the star is a hot thermal source, it can be viewed as the sum of independent emitters <span lang="latex">S_1,S_2,S_3...</span>.  At the detectors <span lang="latex">D_1</span> and <span lang="latex">D_2</span>, we detect two photons, say coming from source <span lang="latex">S_1</span> and  <span lang="latex">S_2</span>.  There are two possible ways that this occurs.  In the <i>direct</i> path, the photon from <span lang="latex">S_1</span> arrives at <span lang="latex">D_1</span> and photon from <span lang="latex">S_2</span> arrives at <span lang="latex">D_2</span> (<span lang="latex">S_1\rightarrow D_1</span>, <span lang="latex">S_2\rightarrow D_2</span>).  In the <i>exchage</i> path, we have <span lang="latex">S_1\rightarrow D_2</span> and <span lang="latex">S_2\rightarrow D_1</span>.  
+	</p>
+	<p align="justify">
+	From a classical perspective, we can always distinguish these different pathways, direct and exchange, and so we treat them as independent events and sum their probabilities <span lang="latex">P_{classical}=|A_{direct}|^2 +|A_{exchange}|^2</span>. From a quantum mechanical perspective, these two pathways are indistinguishable and there is an interference.  For photons, which are bosonic particles, the amplitudes are summed, <span lang="latex">P=|A_{direct}+A_{exchange}|^2=2P_{classical}</span>
+	</p>
+	
+	<div style="width:705px; height:530px;">	
+	<img src="../assets/helium-HBT-705x451.png" alt="He-mcp" style="width:705px; height:451px; " >	
+		<figcaption>Figure 4: Hanbury-Brown and Twiss effect for atoms.  Left: Illustration of experimental implementation.  Image credits: M. Schellekens et al. Science 310, 648 (2005).  Right: Measurements from the lattice gases team at the Institut d'Optique.</figcaption>
+	</div>
+	<p align="justify">
+	The Hanbury-Brown and Twiss effect stimulated a better understanding of quantum correlations and is today celebrated as a modern day pillar of quantum optics.  Using cold atoms with, we have observed this phenomenon with atoms.  We use clouds at a low but finite temperature of a few microKelvin as our thermal source.  These atoms are released onto our electronic detector where our single-particle sensitivity allows us to study density-density correlations, as characterized by a joint detection probaility <span lang="latex">g^{(2)}</span>.  We observe the enhancement in the simultaneous detection of two atoms, a manifestation of quantum statistics.  It is interesting to contrast this to the case of a Bose-Einstein condensate (BEC).  Unlike a thermal cloud, BECs are at absolute zero temperature and thus are represented as a single source <span lang="latex">S</span>.  As such, there is only one possible pathway to the joint detection of atoms (<span lang="latex">S\rightarrow D_1</span>, <span lang="latex">S\rightarrow D_2)</span>.  With only one pathway, there is no interference and no enhancement of detection.
 	</p>
 	
 	<div style="clear:both;"></div>
@@ -66,3 +86,9 @@ title: Helium
 	</div>
 <!-- /.blurb -->
 </body>
+<!--
+
+<div lang="latex">
+		\frac{1+sin(x)}{y}
+</div>
+-->
