@@ -6,10 +6,10 @@ title: Helium
 	<div class="blurb">
 	<h1>Single-atom counting of ultracold clouds</h1>
 	<p align="justify">
-	Over the past twenty years, fhe field of ultracold atoms has come to dominate the study of atomic, molecular and optical physics, with hundreds of experiments <a href="https://ucan.physics.utoronto.ca/">around the world</a>.  In the vast majority of studies, information regarding the image cloud is inferred from optical images of the atom cloud.  Just like in photography, such images integrate over the line-of-sight, and information regarding the depth of the object is lost.   
+	Over the past twenty years, fhe study of ultracold atoms has come to dominate the field of atomic, molecular and optical physics, with hundreds of experiments <a href="https://ucan.physics.utoronto.ca/">around the world</a>.  In the vast majority of studies, information regarding the image cloud is inferred from optical images of the atom cloud.  Just like in photography, such images integrate over the line-of-sight, and information regarding the depth of the object is often lost.   
 	</p>
 	<p>
-	In the <a href="https://www.lcf.institutoptique.fr/Groupes-de-recherche/Optique-atomique/Experiences/Lattice-Gases">Atom Optics group</a> at l'Institut d'Optique, we have been working with a novel electronic detection system using metastable Helium.  This detection scheme allows us to reconstruct the complete three-dimensional distribution of the atom cloud at the single atom level.
+	In the <a href="https://www.lcf.institutoptique.fr/Groupes-de-recherche/Optique-atomique/Experiences/Lattice-Gases">Atom Optics group</a> at l'Institut d'Optique, we have been working with a novel electronic detection system using metastable Helium.  This detection scheme allows us to reconstruct the complete three-dimensional distribution of the atom cloud at the single atom level, providing us with direct access to many-body quantum correlations.
 	</p>
 	</div>
 
@@ -17,7 +17,7 @@ title: Helium
 	<div>
 	<center>
 		<img src="../assets/BECGIFV2.gif" alt="He-BEC" style="width:450px; height:450px; " >	
-		<figcaption>Figure 1: Three-dimensional reconstruction of the velocity distribution of an ultracold cloud.  Each individual point represents at least a single detected Helium atom.  Hotter colors indicate more events within a three-dimensional bin.  Seen is an initially cigar-shaped Bose-Einstein condensate, which has undergone meanfield expansion resulting in an inversion of the aspect ratio.  Surrounding the cloud can be seen a mixture of thermal and quantum depletion.</figcaption>
+		<figcaption>Figure 1: Three-dimensional reconstruction of the velocity distribution of an ultracold cloud.  Each individual point represents at least a single detected Helium atom.  Hotter colors indicate more events within a three-dimensional bin.  Seen is an initially cigar-shaped Bose-Einstein condensate, which has undergone meanfield expansion resulting in an inversion of the aspect ratio.  Surrounding the cloud can be seen a mixture of thermal and quantum depletion. Image credit: Lattice gases team at the Institut d'Optique.</figcaption>
 	</center>
 	</div>
 	
@@ -25,22 +25,22 @@ title: Helium
 
 	<h1>How it works: Electronic detection</h1>
 	<p align="justify">
-	In our experiments, we first prepare some interesting quantum many-body state of ultracold atoms.  Such states are typically characterized by the presence of correlations between particles, which we can directly access with our detection.  To detect the cloud, we release the atom cloud, allowing it to freely expand while falling under gravity.  During the free-fall, the cloud changes in shape and significantly expands in size due to the distribution of velocities in the initial cloud.  After about 330 milliseconds, the atom cloud arrives at our electronic detector, positioned about 50 cm from the initial cloud position.
+	In our experiments, we first prepare a many-body state of ultracold atoms.  Such states are typically characterized by the presence of quantum correlations between the atoms in the cloud, which we can directly access with our detector.  To detect the cloud, we release the atom cloud, allowing it to freely expand while falling under gravity.  During the free-fall, the cloud changes in shape and significantly expands in size due to the distribution of velocities in the initial state.  After about 330 milliseconds, the atom cloud arrives at our electronic detector, positioned about 50 cm from the initial cloud position.
 	</p>
 	<div class="floatleft" style=" width:411px;">
 	<img src="../assets/helium-mcp-411x448.png" alt="He-mcp" style="width:411px; height:448px; " >	
 		<figcaption>Figure 2: Electronic detection of metastable Helium.  Image credit: Lattice gases team at the Institut d'Optique.</figcaption>
 	</div>
 	<p align="justify">
-	For these experiments, we work with Helium atoms in an excited metastable state.  Such atoms are special in that they contain a tremendous amount of internal energy (about 20 eV)  -- essentially, these atoms are like tiny bombs.  When they strike a metal, they `explode', ionizing electrons from the surface of the metal.  In our case, we use a device called a <i>Micro-Channel Plate</i> detector (MCP).  This plate is perforated by an array of holes (channels).  As metastable helium particles fall onto this detector, electrons are ionized, cascading down through the channel ionizing more and more electrons, essentially creating an avalanche like effect.  We have thus amplified a microscopic signal, a single atom, into a macroscopic signal of a few thousand electrons.
+	For these experiments, we work with Helium atoms in an excited metastable state.  Such atoms are special in that they contain a tremendous amount of internal energy (about 20 eV)  -- essentially, these atoms are like tiny bombs.  When they strike a metal, they "explode", releasing their internal energy and ionizing electrons from the surface of the metal.  In our case, we use a device called a <i>Micro-Channel Plate</i> detector (MCP).  This plate is perforated by an array of holes (channels).  As metastable helium particles fall onto this detector, electrons are ionized, cascading down through the channel ionizing more and more electrons, essentially creating an avalanche-like effect.  We have thus amplified a microscopic signal, a single atom, into a macroscopic signal of a few thousand electrons.
 	</p>
 
 	<div style="clear:both;"></div>
 	<p align="justify">
-	This electron shower we then detect using a device called a delay-line anode.  This is essentially just a copper wire wound back-and-forth.  The electron shower strikes the wire, creating a pair of electrical pulses that counter-propagate along the wire.  We detect these pulses, and track their arrival times using a custom FPGA setup.  
+	This electron shower we then detect using a device called a <i>delay-line anode</i>.  This is essentially just a copper wire wound back-and-forth.  The electron shower strikes the wire, creating a pair of electrical pulses that counter-propagate along the wire.  We detect these pulses, and track their arrival times using a custom FPGA setup which is able to operate at speeds up to 4 MHz.  
 	</p>
 	<p align="justify">
-	By looking at the difference in arrival time of these two pulses, we can determine the position along the wire that the atom struck. In our case, we have two such delay lines, wound in perpendicular directions, providing information along the transverse directions <i>x</i> and <i>y</i>.  Lastly, by looking at the average arrival time of these pulses, we obtain information regarding the vertical direction <i>z</i>.
+	By looking at the difference in arrival time of these two pulses, <i>tx1-tx2</i>, we can determine the position along the wire that the atom struck. In our case, we have two such delay lines, wound in perpendicular directions, providing information along the transverse directions <i>x</i> and <i>y</i>.  Lastly, by looking at the average arrival time of these pulses, we obtain information regarding the vertical direction <i>z</i>.
 	</p>
 
 	<div class="floatright" style=" width:430px;">
