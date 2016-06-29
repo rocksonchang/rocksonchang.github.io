@@ -21,3 +21,6 @@ cv: RC_CV_160615
 
 # Build settings
 markdown: kramdown
+
+# background image
+url: "rocksonchang.github.io"
