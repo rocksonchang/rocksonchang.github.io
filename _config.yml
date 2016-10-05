@@ -8,7 +8,7 @@
 # Site settings
 title: Rockson Chang
 #email: chang DOT rockson AT gmail DOT com
-email: chang DOT rockson AT gmail DOT com
+email: chang.rockson@gmail.com
 #description: > # this means to ignore newlines until "baseurl:"
 #  Write an awesome description for your new site here. You can edit this
 #  line in _config.yml. It will appear in your document head meta (for
@@ -17,6 +17,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://rocksonchang.github.io" # the base hostname & protocol for your site
 #twitter_username: jekyllrb
 github_username:  rocksonchang
+linkedin_username: rockson-chang
 cv: RC_CV_160615
 
 # Build settings
