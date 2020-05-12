@@ -5,7 +5,7 @@ permalink: /projects/
 ---
 
 <div class="blurb">
-	<p>A sampling of my recent projects.  Projects are listed in reverse chronological order.</p>
+	<p>A sampling of some old projects.  Projects are listed in reverse chronological order.</p>
 </div>
 <div style="font-size:20px">
 <a href="/projects/science-trends.html"> Science trends: An Interactive Explorer of arXiv Submissions </a> <br>
